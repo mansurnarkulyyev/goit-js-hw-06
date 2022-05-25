@@ -26,35 +26,21 @@ const images = [
 ];
 
 
-const getClass = document.querySelector('.gallery');
+const imgGallery = document.querySelector('.gallery');
 
-
-const makeGalleryImg = ({ url, alt } = {}) => {
+const elements = images.map((el) => {
   const imagesList = document.createElement('li');
   imagesList.classList.add('img-list');
+  imgGallery.append(imagesList)
 
-  const imagesLink = document.createElement('a');
-  imagesLink.href = '#';
-  imagesList.append(imagesLink);
+  const imgEl = document.createElement('img');
+  imgEl.src = el.url
+  imgEl.style.width = '300px'
+  imagesList.append(imgEl)
 
-  const imagesListEl = document.createElement('img')
-  imagesListEl.src = url;
-  imagesListEl.alt = alt;
-  imagesListEl.style.width = "350px";
-  imagesListEl.style.padding = "10px";
-
-
-  imagesLink.append(imagesListEl)
-
-  return imagesList;
-}
-
-const imgArr = images.map(el => {
-  return makeGalleryImg(el)
+  return imgEl
 })
 
-getClass.append(...imgArr);
-
-console.log(imagesGallery);
+imgGallery.append(...elements);
 
 
