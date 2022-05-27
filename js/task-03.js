@@ -26,21 +26,62 @@ const images = [
 ];
 
 
-const imgGallery = document.querySelector('.gallery');
+const galleryEL = document.querySelector('.gallery');
+const makeGalleryCard = ({ url, alt } = {}) => {
+  return `<li class="gallery-item">
+    <img src="${url}" alt="${alt}" width="300px"  >
+</li>`;
+};
 
-const elements = images.map((el) => {
-  const imagesList = document.createElement('li');
-  imagesList.classList.add('img-list');
-  imgGallery.append(imagesList)
+const imgArr = images.map(el => {
+  return makeGalleryCard(el);
+});
+// console.log(imgArr);
+galleryEL.insertAdjacentHTML('afterbegin', imgArr.join(''));
+// galleryEL.innerHTML = cardsArr.join('');
 
-  const imgEl = document.createElement('img');
-  imgEl.src = el.url
-  imgEl.style.width = '300px'
-  imagesList.append(imgEl)
 
-  return imgEl
-})
 
-imgGallery.append(...elements);
+
+
+
+
+
+
+// const imgGallery = document.querySelector('.gallery');
+// ********
+
+// const getId = document.querySelector('.gallery');
+
+
+// for (let element of images) {
+//   const ingredientsItem = document.createElement('li');
+//   ingredientsItem.classList.add('img-list');
+//   const imgEl = document.createElement('img');
+//   imgEl.src = element.url
+//   imgEl.alt = element.alt
+//   imgEl.style.width = '300px'
+//   ingredientsItem.append(imgEl)
+//   getId.append(ingredientsItem);
+// }
+
+// console.log(getId);
+// *******
+
+
+// const elements = images.map((el) => {
+//   const imagesList = document.createElement('li');
+//   imagesList.classList.add('img-list');
+//   imgGallery.append(imagesList)
+
+//   const imgEl = document.createElement('img');
+//   imgEl.src = el.url
+//   imgEl.style.width = '300px'
+//   imagesList.append(imgEl)
+
+//   return imgEl
+// })
+
+// imgGallery.append(...elements);
 
 

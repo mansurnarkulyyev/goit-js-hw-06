@@ -9,20 +9,29 @@ refs.input.addEventListener('blur', onInputBlur);
 // refs.input.addEventListener('change', onInputChange);//для текста в инпуте нельзя использовать change можно только радио кнопок и чекбексах.
 refs.input.addEventListener('input', onInputChange);
 
-function onInputFocus() {
+
+function onInputFocus(event) {
+    if (event.currentTarget.value === "") {
+        refs.span.textContent
+    }
     console.log('Privet Ya INPUT FOCUS');
 }
 
 function onInputBlur() {
-    console.log(refs.span.textContent = 'Anonymous!');
+    console.log(refs.span.textContent = 'Anonymous');
     // refs.span.textContent = event.currentTarget.value;
     // console.log(event);
 
 }
 
 function onInputChange(event) {
-    console.log(event.currentTarget.value);
+
+    // console.log(event.currentTarget.value);
     refs.span.textContent = event.currentTarget.value;
+
+    if (event.currentTarget.value === "") {
+        refs.span.textContent = 'Anonymous'
+    }
 };
 
 
